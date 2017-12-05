@@ -6,16 +6,14 @@
 
     <properties resource="application.properties"/>
 
-    <context id="MySQLTables" targetRuntime="MyBatis3" defaultModelType="flat">
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
 
-        <commentGenerator>
-            <!-- 是否去除自动生成的注释 -->
-            <property name="suppressAllComments" value="false"/>
-            <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
-            <property name="suppressDate" value="true"/>
-            <!-- 添加数据库中的注释 -->
-            <property name="addRemarkComments" value="true"/>
-        </commentGenerator>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="${mapper.plugin}">
+            <property name="mappers" value="${mapper.mappers}"/>
+        </plugin>
 
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection
@@ -24,50 +22,22 @@
                 userId="${spring.datasource.username}"
                 password="${spring.datasource.password}"/>
 
-        <javaModelGenerator targetPackage="com.example.video.pojo"
-                            targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="${targetModelPackage}"
+                            targetProject="${targetJavaProject}"/>
 
-        <sqlMapGenerator targetPackage="com.example.video.dao.sqlmap"
-                         targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="${targetXMLPackage}"
+                         targetProject="${targetResourcesProject}"/>
 
-        <!--<javaClientGenerator targetPackage="com.example.video.dao"
-            targetProject="src/main/java" type="ANNOTATEDMAPPER" />-->
+        <!--<javaClientGenerator targetPackage="${targetXMLPackage}"
+            targetProject="${targetResourcesProject}" type="ANNOTATEDMAPPER" />-->
 
-        <javaClientGenerator targetPackage="com.example.video.dao"
-                             targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="${targetMapperPackage}"
+                             targetProject="${targetJavaProject}" type="XMLMAPPER"/>
 
-        <table schema="svw" tableName="category" domainObjectName="Category"
-               mapperName="CategoryDAO"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               selectByExampleQueryId="false">
+        <table tableName="%">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table schema="svw" tableName="configure" domainObjectName="Configure"
-               mapperName="ConfigureDAO"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <table schema="svw" tableName="video" domainObjectName="Video"
-               mapperName="VideoDAO"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <table schema="svw" tableName="videostate" domainObjectName="VideoState"
-               mapperName="VideoStateDAO"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
+
 
     </context>
 
