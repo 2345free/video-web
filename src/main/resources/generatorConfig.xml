@@ -43,7 +43,30 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table schema="svw" tableName="configure" domainObjectName="Configure"
+               mapperName="ConfigureDAO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="svw" tableName="video" domainObjectName="Video"
+               mapperName="VideoDAO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="svw" tableName="videostate" domainObjectName="VideoState"
+               mapperName="VideoStateDAO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
         </table>
 
     </context>

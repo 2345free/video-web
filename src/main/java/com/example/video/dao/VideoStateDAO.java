@@ -1,5 +1,5 @@
 package com.example.video.dao;
 
-public interface CategoryDAO {
+public interface VideoStateDAO {
 
 }
