@@ -8,10 +8,10 @@ import com.example.video.service.CategoryService;
 import com.example.video.service.ConfigureService;
 import com.example.video.service.VideoService;
 import com.example.video.service.VideostateService;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,25 +43,30 @@ public class VideoController {
     @Autowired
     private VideostateService videostateService;
 
-    @RequestMapping("/get-all")
-    public String getAll(Model model) {
-        List<Video> videos = videoService.selectByExample(null);
-        model.addAttribute(videos);
-        // live
+    @RequestMapping("/list/{isLive}")
+    public String getAll(@PathVariable Integer isLive, Model model) {
+
         Example var1 = new Example(Video.class);
         var1.setOrderByClause("edittime asc");
-        var1.createCriteria().andEqualTo("islive", 1);
-        PageHelper.startPage(0, 4);
-        List<Video> resultVideoLive = videoService.selectByExample(var1);
-        model.addAttribute("resultVideoLive", resultVideoLive);
+        Example.Criteria var1Criteria = var1.createCriteria();
+        if (isLive == 1) {
+            // live
+            var1Criteria.andEqualTo("islive", 1);
+        } else {
+            // vod
+            var1Criteria.andEqualTo("islive", 0);
+        }
+        List<Video> videos = videoService.selectByExample(var1);
+        // 查找videostate
+        if (!CollectionUtils.isEmpty(videos)) {
+            Videostate videostate = videostateService.selectByKey(videos.get(0).getVideostateid());
+            for (Video video : videos) {
+                video.setVideostate(videostate);
+            }
+        }
+        model.addAttribute("videos", videos);
+        model.addAttribute("isLive", isLive);
 
-        // vod
-        var1 = new Example(Video.class);
-        var1.setOrderByClause("edittime asc");
-        var1.createCriteria().andEqualTo("islive", 0);
-        PageHelper.startPage(0, 4);
-        List<Video> resultVideoVod = videoService.selectByExample(var1);
-        model.addAttribute("resultVideoVod", resultVideoVod);
         return "videolist1";
     }
 

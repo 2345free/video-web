@@ -10,17 +10,17 @@
 
     <title>Simplest Video Website</title>
 
-    <link href="css/svw_style.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/showhide.js"></script>
-    <script type="text/JavaScript" src="js/jquery.mousewheel.js"></script>
+    <link href="/css/svw_style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/showhide.js"></script>
+    <script type="text/JavaScript" src="/js/jquery.mousewheel.js"></script>
 
     <!-- validationEngine -->
-    <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/validationEngine.jquery.css" type="text/css"/>
     <!-- <script src="js/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8"></script> -->
-    <script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 
 
     <script type="text/javascript">
@@ -44,7 +44,7 @@
         <div class="post">
 
             <div id="contact_form">
-                <form id="configform" method="post" name="update" action="ConfigureUpdateUpdate.action"
+                <form id="configform" method="post" name="update" action="/config/update"
                       enctype="multipart/form-data">
                     <h2>配置</h2>
                     <label for="transcoder_vcodec">视频编码器:</label> <input type="text"

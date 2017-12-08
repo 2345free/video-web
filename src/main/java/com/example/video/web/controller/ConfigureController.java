@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/config")
 public class ConfigureController {
@@ -18,8 +16,8 @@ public class ConfigureController {
 
     @RequestMapping("/get-all")
     public String getAll(Model model) {
-        List<Configure> configures = configureService.selectByExample(null);
-        model.addAttribute(configures);
+        Configure configure = configureService.selectByKey(1);
+        model.addAttribute("configure", configure);
         return "configure";
     }
 

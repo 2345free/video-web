@@ -7,8 +7,10 @@ public class Videostate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "`name`")
     private String name;
 
+    @Column(name = "`order`")
     private Integer order;
 
     private String cssstyle;

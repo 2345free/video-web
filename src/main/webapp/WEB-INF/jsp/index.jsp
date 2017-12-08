@@ -68,7 +68,7 @@
 </div>
 <div id="svw_main">
 
-    <h2><a href="VideoReadAll.action?islive=0">点播</a></h2>
+    <h2><a href="/video/list/0">点播</a></h2>
     <c:if test="${empty resultVideoVod}">
         <div style="height:100px;"><p>没有视频，单击管理页面的“添加”按钮来添加新视频</p></div>
     </c:if>
@@ -82,7 +82,7 @@
 
     <div class="cleaner h20"></div>
 
-    <h2><a href="VideoReadAll.action?islive=1">直播</a></h2>
+    <h2><a href="/video/list/1">直播</a></h2>
     <c:if test="${empty resultVideoLive}">
         <div style="height:100px;"><p>没有视频，单击管理页面的“添加”按钮来添加新视频</p></div>
     </c:if>

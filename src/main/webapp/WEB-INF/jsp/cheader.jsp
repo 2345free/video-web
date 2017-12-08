@@ -16,12 +16,12 @@
 
 </script>
 
-<div id="site_title"><h1><a href="Index.action">Simplest Video Website</a></h1></div>
+<div id="site_title"><h1><a href="/">Simplest Video Website</a></h1></div>
 <div id="svw_menu" class="ddsmoothmenu">
     <ul>
-        <li><a href="Index.action" class="selected">首页</a></li>
-        <li><a href="VideoReadAll.action?islive=0">点播</a></li>
-        <li><a href="VideoReadAll.action?islive=1">直播</a></li>
+        <li><a href="/" class="selected">首页</a></li>
+        <li><a href="/video/list/0">点播</a></li>
+        <li><a href="/video/list/1">直播</a></li>
         <!--
             <ul>
                 <li><span class="top"></span><span class="bottom"></span></li>
@@ -30,7 +30,7 @@
               </ul>
          -->
         <li><a href="About.action">关于</a></li>
-        <li><a href="ConfigureUpdateRead.action">设置</a></li>
+        <li><a href="/config/get-all">设置</a></li>
         <li><a href="#">语言</a>
             <ul>
                 <li><a href="Index.action?request_locale=en_US">English</a></li>
