@@ -51,14 +51,14 @@
     </c:if>
     <c:forEach items="${videos}" var="video">
         <div class="col one_fourth gallery_box" style="${video.videostate.cssstyle}">
-            <a href="VideoReadByID.action?videoid=${video.id}"><img src="/${video.thumbnailurl}" alt="thumbnail"
+            <a href="/video/get/${video.id}"><img src="/${video.thumbnailurl}" alt="thumbnail"
                                                                     class="image_frame"/></a>
-            <h5><a href="VideoReadByID.action?videoid=${video.id}">${video.name}</a></h5>
+            <h5><a href="/video/get/${video.id}">${video.name}</a></h5>
             <p>编辑时间:${video.edittime}</p>
             <p>
-                <a href="VideoReadByID.action?videoid=${video.id}">内容</a>|
-                <a href="VideoUpdateRead.action?videoid=${video.id}">编辑</a>|
-                <a href="javascript:if(confirm('Are you sure to Delete?'))location='VideoDelete.action?videoid=${video.id}'">删除</a>
+                <a href="/video/get/${video.id}">内容</a>|
+                <a href="/video/edit/${video.id}">编辑</a>|
+                <a href="javascript:if(confirm('Are you sure to Delete?'))location='/video/delete/${video.id}'">删除</a>
             </p>
         </div>
     </c:forEach>

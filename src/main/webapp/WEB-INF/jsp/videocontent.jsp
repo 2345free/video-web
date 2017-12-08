@@ -10,15 +10,15 @@
 
     <title>Simplest Video Website</title>
 
-    <link href="css/svw_style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/svw_style.css" rel="stylesheet" type="text/css"/>
 
-    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/showhide.js"></script>
-    <script type="text/JavaScript" src="js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/showhide.js"></script>
+    <script type="text/JavaScript" src="/js/jquery.mousewheel.js"></script>
 
     <!-- Flow Player -->
-    <script type="text/javascript" src="videoplayer/flowplayer-3.2.8.min.js"></script>
+    <script type="text/javascript" src="/videoplayer/flowplayer-3.2.8.min.js"></script>
 </head>
 
 <body id="subpage">
@@ -51,7 +51,7 @@
                             server = arr[2];
                             app = arr[3];
                             playpath = arr[4];
-                            flowplayer("player", "videoplayer/flowplayer-3.2.8.swf", {
+                            flowplayer("player", "/videoplayer/flowplayer-3.2.8.swf", {
                                 clip: {
                                     //scaling:'orig',
                                     url: playpath,
@@ -60,7 +60,7 @@
                                 },
                                 plugins: {
                                     rtmp: {
-                                        url: 'videoplayer/flowplayer.rtmp-3.2.8.swf',
+                                        url: '/videoplayer/flowplayer.rtmp-3.2.8.swf',
                                         netConnectionUrl: protocol + '//' + server + '/' + app
                                     }
                                 }
@@ -74,17 +74,17 @@
                            href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/${video.url}">
                         </a>
                         <script>
-                            flowplayer("player", "videoplayer/flowplayer-3.2.8.swf");
+                            flowplayer("player", "/videoplayer/flowplayer-3.2.8.swf");
                         </script>
                     </c:otherwise>
                 </c:choose>
             </div>
 
             <div class="meta">
-                <span class="content"><a href="VideoReadByID.action?videoid=${video.id}">内容</a></span>
-                <span class="edit"><a href="VideoUpdateRead.action?videoid=${video.id}">编辑</a></span>
+                <span class="content"><a href="/video/get/${video.id}">内容</a></span>
+                <span class="edit"><a href="/video/edit/${video.id}">编辑</a></span>
                 <span class="delete"><a
-                        href="javascript:if(confirm('Are you sure to delete?'))location='VideoDelete.action?videoid=${video.id}'">删除</a></span>
+                        href="javascript:if(confirm('Are you sure to delete?'))location='/video/delete/${video.id}'">删除</a></span>
 
                 <div class="cleaner"></div>
             </div>
@@ -141,11 +141,11 @@
 
     <div id="sidebar">
         <ul class="svw_list">
-            <li><a href="VideoReadAll.action?islive=${video.islive}">返回</a></li>
-            <li><a href="VideoReadByID.action?videoid=${video.id}">内容</a></li>
-            <li><a href="VideoUpdateRead.action?videoid=${video.id}">编辑</a></li>
+            <li><a href="/video/list/${video.islive}">返回</a></li>
+            <li><a href="/video/get/${video.id}">内容</a></li>
+            <li><a href="/video/edit/${video.id}">编辑</a></li>
             <li>
-                <a href="javascript:if(confirm('Are you sure to Delete?'))location='VideoDelete.action?videoid=${video.id}'">删除</a>
+                <a href="javascript:if(confirm('Are you sure to Delete?'))location='/video/delete/${video.id}'">删除</a>
             </li>
 
         </ul>

@@ -54,7 +54,7 @@
     <!-- This is the container for the carousel. -->
     <div id="carousel1" style="width:960px; height:280px;background:none;overflow:scroll; margin-top: 20px">
         <c:forEach items="${resultVideo}" var="video">
-            <a href="VideoReadByID.action?videoid=${video.id}" rel="lightbox">
+            <a href="/video/get/${video.id}" rel="lightbox">
                 <img class="cloudcarousel" src="${video.thumbnailurl}" alt="${video.name}" title="${video.name}"/>
             </a>
         </c:forEach>
@@ -74,9 +74,9 @@
     </c:if>
     <c:forEach items="${resultVideoVod}" var="video">
         <div class="col one_fourth gallery_box" style="background:#FFFFFF">
-            <a href="VideoReadByID.action?videoid=${video.id}"><img src="${video.thumbnailurl}" alt="thumbnail"
-                                                                    class="image_frame"/></a>
-            <h5><a href="VideoReadByID.action?videoid=${video.id}">${video.name}</a></h5>
+            <a href="/video/get/${video.id}"><img src="${video.thumbnailurl}" alt="thumbnail"
+                                                  class="image_frame"/></a>
+            <h5><a href="/video/get/${video.id}">${video.name}</a></h5>
         </div>
     </c:forEach>
 
@@ -88,9 +88,9 @@
     </c:if>
     <c:forEach items="${resultVideoLive}" var="video">
         <div class="col one_fourth gallery_box" style="background:#FFFFFF">
-            <a href="VideoReadByID.action?videoid=${video.id}"><img src="${video.thumbnailurl}" alt="thumbnail"
-                                                                    class="image_frame"/></a>
-            <h5><a href="VideoReadByID.action?videoid=${video.id}">${video.name}</a></h5>
+            <a href="/video/get/${video.id}"><img src="${video.thumbnailurl}" alt="thumbnail"
+                                                  class="image_frame"/></a>
+            <h5><a href="/video/get/${video.id}">${video.name}</a></h5>
         </div>
     </c:forEach>
     <div class="cleaner"></div>

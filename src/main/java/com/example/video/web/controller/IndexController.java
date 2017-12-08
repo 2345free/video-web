@@ -5,6 +5,7 @@ import com.example.video.service.VideoService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tk.mybatis.mapper.entity.Example;
 
@@ -60,6 +61,11 @@ public class IndexController {
         model.put("resultVideoVod", resultVideoVod);
 
         return "index";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
     }
 
 }

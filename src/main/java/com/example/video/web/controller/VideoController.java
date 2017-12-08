@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -71,20 +72,20 @@ public class VideoController {
     }
 
     @RequestMapping("/get/{id}")
-    public String get(@PathVariable String id, Model model) {
+    public String get(@PathVariable Integer id, Model model) {
         Video video = videoService.selectByKey(id);
-        model.addAttribute(video);
+        model.addAttribute("video", video);
         return "videocontent";
     }
 
     @RequestMapping("/update")
     public String update(Video video) {
         videoService.updateNotNull(video);
-        return "videocontent";
+        return "redirect:get/" + video.getId();
     }
 
     @RequestMapping("/delete/{id}")
-    public String delete(@PathVariable String id, ServletContext servletContext) {
+    public String delete(@PathVariable Integer id, ServletContext servletContext) {
         Video video = videoService.selectByKey(id);
         //相对路径
         String thumbnailPath = video.getThumbnailurl();
@@ -185,6 +186,13 @@ public class VideoController {
             videoService.save(video);
         }
         return "videolist1";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model) {
+        Video video = videoService.selectByKey(id);
+        model.addAttribute("video", video);
+        return "videoedit";
     }
 
 

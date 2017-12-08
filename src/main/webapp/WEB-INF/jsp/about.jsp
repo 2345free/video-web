@@ -82,12 +82,13 @@
         </div>
     </div>
 
-    <div id="sidebar">
+    <%--<div id="sidebar">--%>
 
-        <s:action name="SidebarRecent" executeResult="true">
-            <s:param name="num">5</s:param>
-        </s:action>
-    </div> <!-- end of sidebar -->
+    <%--<s:action name="SidebarRecent" executeResult="true">--%>
+    <%--<s:param name="num">5</s:param>--%>
+    <%--</s:action>--%>
+    <%--</div> --%>
+    <!-- end of sidebar -->
 
     <div class="cleaner"></div>
 </div> <!-- END of svw_main -->

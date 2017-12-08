@@ -29,8 +29,8 @@
                 <li><a href="...">Sub menu 2</a></li>
               </ul>
          -->
-        <li><a href="About.action">关于</a></li>
-        <li><a href="/config/get-all">设置</a></li>
+        <li><a href="/about">关于</a></li>
+        <li><a href="/config/list">设置</a></li>
         <li><a href="#">语言</a>
             <ul>
                 <li><a href="Index.action?request_locale=en_US">English</a></li>

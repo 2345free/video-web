@@ -10,17 +10,17 @@
 
     <title>Simplest Video Website</title>
 
-    <link href="css/svw_style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/svw_style.css" rel="stylesheet" type="text/css"/>
 
-    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/showhide.js"></script>
-    <script type="text/JavaScript" src="js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/showhide.js"></script>
+    <script type="text/JavaScript" src="/js/jquery.mousewheel.js"></script>
 
     <!-- validationEngine -->
-    <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
-    <script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="/css/validationEngine.jquery.css" type="text/css"/>
+    <script src="/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#videoform1").validationEngine();
@@ -64,13 +64,14 @@
                     <form id="videoform1" method="post"
                             <c:choose>
                                 <c:when test="${!empty video}">
-                                    name="update" action="VideoUpdateUpdate.action"
+                                    name="update" action="/video/update"
                                 </c:when>
                                 <c:otherwise>
-                                    name="add" action="VideoAdd.action"
+                                    name="add" action="/video/add"
                                 </c:otherwise>
                             </c:choose>
                           enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="${video.id}"/>
                         <label for="name">名称:</label> <input type="text" id="name" name="name" value="${video.name}"
                                                              class="validate[required] required input_field"/>
                         <div class="cleaner h10"></div>
@@ -110,12 +111,12 @@
 
     <div id="sidebar">
         <ul class="svw_list">
-            <li><a href="VideoReadAll.action?islive=${islive}">返回</a></li>
+            <li><a href="/video/list/${islive}">返回</a></li>
             <c:if test="${!empty video}">
-                <li><a href="VideoReadByID.action?videoid=${video.id}">内容</a></li>
-                <li><a href="VideoUpdateRead.action?videoid=${video.id}">编辑</a></li>
+                <li><a href="/video/get/${video.id}">内容</a></li>
+                <li><a href="/video/edit/${video.id}">编辑</a></li>
                 <li>
-                    <a href="javascript:if(confirm('Are you sure to Delete?'))location='VideoDelete.action?videoid=${video.id}'">删除</a>
+                    <a href="javascript:if(confirm('Are you sure to Delete?'))location='/video/delete/${video.id}'">删除</a>
                 </li>
             </c:if>
         </ul>
