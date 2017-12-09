@@ -50,8 +50,8 @@
 
 <div id="svw_main">
 
-    <h2>错误</h2>
-    <p><5秒之后返回首页</p>
+    <h2><spring:message code="global.error.title"/></h2>
+    <p>&lt;<spring:message code="global.error.content"/></p>
     <script language="javascript" type="text/javascript">
         //timer
         setTimeout("javascript:location.href='/'", 5000);

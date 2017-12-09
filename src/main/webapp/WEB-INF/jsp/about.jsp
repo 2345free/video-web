@@ -29,7 +29,7 @@
 <div id="svw_main">
 
     <div id="content">
-        <h2>关于</h2>
+        <h2><spring:message code="about.aboutme"/></h2>
         <p>Simplest Video Website is the simplest demo about video website. it is based on JavaEE and FFmpeg.</p>
         <p>The site use following projects:</p>
         <ul>

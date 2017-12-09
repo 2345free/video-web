@@ -41,19 +41,19 @@
             <c:choose>
                 <c:when test="${empty video}">
                     <c:set value='<%=request.getParameter("islive")%>' var="islive" scope="page"/>
-                    <h2>增加
+                    <h2><spring:message code="video.add"/>
                         <c:choose>
-                            <c:when test="${islive==1}">直播</c:when>
-                            <c:otherwise>点播</c:otherwise>
+                            <c:when test="${islive==1}"><spring:message code="video.live"/></c:when>
+                            <c:otherwise><spring:message code="video.vod"/></c:otherwise>
                         </c:choose>
                     </h2>
                 </c:when>
                 <c:otherwise>
                     <c:set value="${video.islive}" var="islive" scope="page"/>
-                    <h2>编辑
+                    <h2><spring:message code="video.edit"/>
                         <c:choose>
-                            <c:when test="${islive==1}">直播</c:when>
-                            <c:otherwise>点播</c:otherwise>
+                            <c:when test="${islive==1}"><spring:message code="video.live"/></c:when>
+                            <c:otherwise><spring:message code="video.vod"/></c:otherwise>
                         </c:choose>
                         - ${video.name}
                     </h2>
@@ -72,8 +72,10 @@
                             </c:choose>
                           enctype="multipart/form-data">
                         <input type="hidden" name="id" value="${video.id}"/>
-                        <label for="name">名称:</label> <input type="text" id="name" name="name" value="${video.name}"
-                                                             class="validate[required] required input_field"/>
+                        <label for="name"><spring:message code="video.name"/>:</label> <input type="text" id="name"
+                                                                                              name="name"
+                                                                                              value="${video.name}"
+                                                                                              class="validate[required] required input_field"/>
                         <div class="cleaner h10"></div>
 
                         <input type="hidden" name="islive" value="${islive}"/>
@@ -85,20 +87,25 @@
                             </c:when>
                             <c:otherwise>
                                 <c:if test="${empty video}">
-                                    <label for="videofile">文件:</label> <input type="file" id="videofile"
-                                                                              name="videofile"
-                                                                              class="validate[required] required input_field"/>
+                                    <label for="videofile"><spring:message code="video.file"/>:</label> <input
+                                        type="file" id="videofile"
+                                        name="videofile"
+                                        class="validate[required] required input_field"/>
                                     <div class="cleaner h10"></div>
                                 </c:if>
                             </c:otherwise>
                         </c:choose>
 
-                        <label for="intro">简介:</label> <textarea id="intro" name="intro" rows="100" cols="0"
-                                                                 class="required">${video.intro}</textarea>
+                        <label for="intro"><spring:message code="video.intro"/>:</label> <textarea id="intro"
+                                                                                                   name="intro"
+                                                                                                   rows="100" cols="0"
+                                                                                                   class="required">${video.intro}</textarea>
                         <div class="cleaner h10"></div>
 
-                        <input type="submit" value="提交" id="submit" name="submit" class="submit_btn float_l"/>
-                        <input type="reset" value="重置" id="reset" name="reset" class="submit_btn float_r"/>
+                        <input type="submit" value="<spring:message code="global.submit"/>" id="submit" name="submit"
+                               class="submit_btn float_l"/>
+                        <input type="reset" value="<spring:message code="global.reset"/>" id="reset" name="reset"
+                               class="submit_btn float_r"/>
 
                     </form>
                 </div>
@@ -111,12 +118,13 @@
 
     <div id="sidebar">
         <ul class="svw_list">
-            <li><a href="/video/list/${islive}">返回</a></li>
+            <li><a href="/video/list/${islive}"><spring:message code="video.return"/></a></li>
             <c:if test="${!empty video}">
-                <li><a href="/video/get/${video.id}">内容</a></li>
-                <li><a href="/video/edit/${video.id}">编辑</a></li>
+                <li><a href="/video/get/${video.id}"><spring:message code="video.content"/></a></li>
+                <li><a href="/video/edit/${video.id}"><spring:message code="video.edit"/></a></li>
                 <li>
-                    <a href="javascript:if(confirm('Are you sure to Delete?'))location='/video/delete/${video.id}'">删除</a>
+                    <a href="javascript:if(confirm('Are you sure to Delete?'))location='/video/delete/${video.id}'"><spring:message
+                            code="video.delete"/></a>
                 </li>
             </c:if>
         </ul>

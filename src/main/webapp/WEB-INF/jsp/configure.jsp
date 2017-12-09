@@ -46,106 +46,117 @@
             <div id="contact_form">
                 <form id="configform" method="post" name="update" action="/config/update"
                       enctype="multipart/form-data">
-                    <h2>配置</h2>
-                    <label for="transcoder_vcodec">视频编码器:</label> <input type="text"
-                                                                         id="transcoder_vcodec"
-                                                                         name="transcoder_vcodec"
-                                                                         value="${transcoder_vcodec}"
-                                                                         class="validate[required] required input_field"/>
+                    <h2><spring:message code="configure.configure"/></h2>
+                    <label for="transcoder_vcodec"><spring:message code="configure.transcoder_vcodec"/>:</label> <input
+                        type="text"
+                        id="transcoder_vcodec"
+                        name="transcoder_vcodec"
+                        value="${transcoder_vcodec}"
+                        class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_bv">视频码率 (bps):</label>
+                    <label for="transcoder_bv"><spring:message code="configure.transcoder_bv"/>:</label>
                     <input type="text" id="transcoder_bv" name="transcoder_bv" value="${transcoder_bv}"
                            class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_framerate">视频帧率 (fps):</label>
+                    <label for="transcoder_framerate"><spring:message code="configure.transcoder_framerate"/>:</label>
                     <input type="text" id="transcoder_framerate" name="transcoder_framerate"
                            value="${transcoder_framerate}"
                            class="validate[required,custom[integer]] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_acodec">音频编码器:</label> <input type="text"
-                                                                         id="transcoder_acodec"
-                                                                         name="transcoder_acodec"
-                                                                         value="${transcoder_acodec}"
-                                                                         class="validate[required] required input_field"/>
+                    <label for="transcoder_acodec"><spring:message code="configure.transcoder_acodec"/>:</label> <input
+                        type="text"
+                        id="transcoder_acodec"
+                        name="transcoder_acodec"
+                        value="${transcoder_acodec}"
+                        class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_ar">音频采样率 (Hz):</label>
+                    <label for="transcoder_ar"><spring:message code="configure.transcoder_ar"/>:</label>
                     <input type="text" id="transcoder_ar" name="transcoder_ar" value="${transcoder_ar}"
                            class="validate[required,custom[integer]] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_ba">音频码率 (bps):</label>
+                    <label for="transcoder_ba"><spring:message code="configure.transcoder_ba"/>:</label>
                     <input type="text" id="transcoder_ba" name="transcoder_ba" value="${transcoder_ba}"
                            class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_scale_w">视频宽 (pixel):</label> <input type="text"
-                                                                                id="transcoder_scale_w"
-                                                                                name="transcoder_scale_w"
-                                                                                value="${transcoder_scale_w}"
-                                                                                class="validate[required,custom[integer]] required input_field"/>
+                    <label for="transcoder_scale_w"><spring:message code="configure.transcoder_scale_w"/>:</label>
+                    <input type="text"
+                           id="transcoder_scale_w"
+                           name="transcoder_scale_w"
+                           value="${transcoder_scale_w}"
+                           class="validate[required,custom[integer]] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_scale_h">视频高 (pixel):</label> <input type="text"
-                                                                                id="transcoder_scale_h"
-                                                                                name="transcoder_scale_h"
-                                                                                value="${transcoder_scale_h}"
-                                                                                class="validate[required,custom[integer]] required input_field"/>
+                    <label for="transcoder_scale_h"><spring:message code="configure.transcoder_scale_h"/>:</label>
+                    <input type="text"
+                           id="transcoder_scale_h"
+                           name="transcoder_scale_h"
+                           value="${transcoder_scale_h}"
+                           class="validate[required,custom[integer]] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_watermarkuse">使用水印:</label>
+                    <label for="transcoder_watermarkuse"><spring:message
+                            code="configure.transcoder_watermarkuse"/>:</label>
                     <select id="transcoder_watermarkuse" name="transcoder_watermarkuse" class="required input_field">
-                        <option value="true">是</option>
-                        <option value="false">否</option>
+                        <option value="true"><spring:message code="configure.true"/></option>
+                        <option value="false"><spring:message code="configure.false"/></option>
                     </select>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_watermark_url">水印文件路径:</label> <input type="text"
-                                                                                 id="transcoder_watermark_url"
-                                                                                 name="transcoder_watermark_url"
-                                                                                 value="${transcoder_watermark_url}"
-                                                                                 class="validate[required] required input_field"/>
+                    <label for="transcoder_watermark_url"><spring:message
+                            code="configure.transcoder_watermark_url"/>:</label> <input type="text"
+                                                                                        id="transcoder_watermark_url"
+                                                                                        name="transcoder_watermark_url"
+                                                                                        value="${transcoder_watermark_url}"
+                                                                                        class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_watermark_x">水印位置-x坐标 (pixel):</label> <input type="text"
-                                                                                         id="transcoder_watermark_x"
-                                                                                         name="transcoder_watermark_x"
-                                                                                         value="${transcoder_watermark_x}"
-                                                                                         class="validate[required,custom[integer]] required input_field"/>
+                    <label for="transcoder_watermark_x"><spring:message
+                            code="configure.transcoder_watermark_x"/>:</label> <input type="text"
+                                                                                      id="transcoder_watermark_x"
+                                                                                      name="transcoder_watermark_x"
+                                                                                      value="${transcoder_watermark_x}"
+                                                                                      class="validate[required,custom[integer]] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_watermark_y">水印坐标-y坐标 (pixel):</label> <input type="text"
-                                                                                         id="transcoder_watermark_y"
-                                                                                         name="transcoder_watermark_y"
-                                                                                         value="${transcoder_watermark_y}"
-                                                                                         class="validate[required,custom[integer]] required input_field"/>
+                    <label for="transcoder_watermark_y"><spring:message
+                            code="configure.transcoder_watermark_y"/>:</label> <input type="text"
+                                                                                      id="transcoder_watermark_y"
+                                                                                      name="transcoder_watermark_y"
+                                                                                      value="${transcoder_watermark_y}"
+                                                                                      class="validate[required,custom[integer]] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_keepaspectratio">保持宽高比并且填充黑边:</label>
+                    <label for="transcoder_keepaspectratio"><spring:message
+                            code="configure.transcoder_keepaspectratio"/>:</label>
                     <select id="transcoder_keepaspectratio" name="transcoder_keepaspectratio"
                             class="required input_field">
-                        <option value="true">是</option>
-                        <option value="false">否</option>
+                        <option value="true"><spring:message code="configure.true"/></option>
+                        <option value="false"><spring:message code="configure.false"/></option>
                     </select>
                     <div class="cleaner h10"></div>
-                    <label for="transcoder_outfmt">输出视频封装格式:</label> <input type="text"
-                                                                            id="transcoder_outfmt"
-                                                                            name="transcoder_outfmt"
-                                                                            value="${transcoder_outfmt}"
-                                                                            class="validate[required] required input_field"/>
+                    <label for="transcoder_outfmt"><spring:message code="configure.transcoder_outfmt"/>:</label> <input
+                        type="text"
+                        id="transcoder_outfmt"
+                        name="transcoder_outfmt"
+                        value="${transcoder_outfmt}"
+                        class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="thumbnail_ss">视频截图位置 (sec):</label> <input
+                    <label for="thumbnail_ss"><spring:message code="configure.thumbnail_ss"/>:</label> <input
                         type="text" id="thumbnail_ss" name="thumbnail_ss" value="${thumbnail_ss}"
                         class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="folder_videoori">上传视频存放文件夹:</label>
+                    <label for="folder_videoori"><spring:message code="configure.folder_videoori"/>:</label>
                     <input type="text" id="folder_videoori" name="folder_videoori" value="${folder_videoori}"
                            class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="folder_video">转码视频存放文件夹:</label> <input
+                    <label for="folder_video"><spring:message code="configure.folder_video"/>:</label> <input
                         type="text" id="folder_video" name="folder_video" value="${folder_video}"
                         class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <label for="folder_thumbnail">视频截图存放文件夹:</label> <input type="text"
-                                                                            id="folder_thumbnail"
-                                                                            name="folder_thumbnail"
-                                                                            value="${folder_thumbnail}"
-                                                                            class="validate[required] required input_field"/>
+                    <label for="folder_thumbnail"><spring:message code="configure.folder_thumbnail"/>:</label> <input
+                        type="text"
+                        id="folder_thumbnail"
+                        name="folder_thumbnail"
+                        value="${folder_thumbnail}"
+                        class="validate[required] required input_field"/>
                     <div class="cleaner h10"></div>
-                    <input type="submit" value="提交" id="submit"
+                    <input type="submit" value="<spring:message code="global.submit"/>" id="submit"
                            name="submit" class="submit_btn float_l"/>
-                    <input type="reset" value="重置" id="reset" name="reset"
+                    <input type="reset" value="<spring:message code="global.reset"/>" id="reset" name="reset"
                            class="submit_btn float_r"/>
 
                 </form>
@@ -154,11 +165,12 @@
         <div class="cleaner"></div>
     </div>
 
-    <div id="sidebar">
-        <s:action name="SidebarRecent" executeResult="true">
-            <s:param name="num">5</s:param>
-        </s:action>
-    </div> <!-- end of sidebar -->
+    <%--    <div id="sidebar">
+            <s:action name="SidebarRecent" executeResult="true">
+                <s:param name="num">5</s:param>
+            </s:action>
+        </div> --%>
+    <!-- end of sidebar -->
     <div class="cleaner"></div>
 </div> <!-- END of svw_main -->
 

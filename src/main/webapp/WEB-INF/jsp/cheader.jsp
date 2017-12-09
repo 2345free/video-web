@@ -19,9 +19,9 @@
 <div id="site_title"><h1><a href="/">Simplest Video Website</a></h1></div>
 <div id="svw_menu" class="ddsmoothmenu">
     <ul>
-        <li><a href="/" class="selected">首页</a></li>
-        <li><a href="/video/list/0">点播</a></li>
-        <li><a href="/video/list/1">直播</a></li>
+        <li><a href="/" class="selected"><spring:message code="index.index"/></a></li>
+        <li><a href="/video/list/0"><spring:message code="video.vod"/></a></li>
+        <li><a href="/video/list/1"><spring:message code="video.live"/></a></li>
         <!--
             <ul>
                 <li><span class="top"></span><span class="bottom"></span></li>
@@ -29,12 +29,12 @@
                 <li><a href="...">Sub menu 2</a></li>
               </ul>
          -->
-        <li><a href="/about">关于</a></li>
-        <li><a href="/config/list">设置</a></li>
-        <li><a href="#">语言</a>
+        <li><a href="/about"><spring:message code="about.about"/></a></li>
+        <li><a href="/config/list"><spring:message code="configure.configure"/></a></li>
+        <li><a href="#"><spring:message code="configure.language"/></a>
             <ul>
-                <li><a href="Index.action?request_locale=en_US">English</a></li>
-                <li><a href="Index.action?request_locale=zh_CN">简体中文</a></li>
+                <li><a href="?locale=en_US">English</a></li>
+                <li><a href="?locale=zh_CN">简体中文</a></li>
             </ul>
         </li>
     </ul>

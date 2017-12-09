@@ -19,7 +19,7 @@ public class IndexController {
     @Autowired
     private VideoService videoService;
 
-    @RequestMapping({"", "/"})
+    @RequestMapping({"", "/", "/index"})
     public String index(Map<String, Object> model) {
         Example var1 = new Example(Video.class);
         var1.createCriteria().andEqualTo("islive", "0");

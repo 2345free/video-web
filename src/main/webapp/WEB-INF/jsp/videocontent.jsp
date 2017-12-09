@@ -32,8 +32,8 @@
         <div class="post">
             <h2>
                 <c:choose>
-                    <c:when test="${video.islive==1}">[直播]</c:when>
-                    <c:otherwise>[点播]</c:otherwise>
+                    <c:when test="${video.islive==1}">[<spring:message code="video.live"/>]</c:when>
+                    <c:otherwise>[<spring:message code="video.vod"/>]</c:otherwise>
                 </c:choose>
                 ${video.name}
             </h2>
@@ -81,21 +81,22 @@
             </div>
 
             <div class="meta">
-                <span class="content"><a href="/video/get/${video.id}">内容</a></span>
-                <span class="edit"><a href="/video/edit/${video.id}">编辑</a></span>
+                <span class="content"><a href="/video/get/${video.id}"><spring:message code="video.content"/></a></span>
+                <span class="edit"><a href="/video/edit/${video.id}"><spring:message code="video.edit"/></a></span>
                 <span class="delete"><a
-                        href="javascript:if(confirm('Are you sure to delete?'))location='/video/delete/${video.id}'">删除</a></span>
+                        href="javascript:if(confirm('Are you sure to delete?'))location='/video/delete/${video.id}'"><spring:message
+                        code="video.delete"/></a></span>
 
                 <div class="cleaner"></div>
             </div>
         </div>
 
         <div class="cleaner h20"></div>
-        <h3>简介</h3>
+        <h3><spring:message code="video.intro"/></h3>
         <div id="comment_section">
             <c:choose>
                 <c:when test="${empty video.intro}">
-                    <p>暂无简介</p>
+                    <p><spring:message code="video.intronull"/></p>
                 </c:when>
                 <c:otherwise>
                     <p>${video.intro}</p>
@@ -141,11 +142,12 @@
 
     <div id="sidebar">
         <ul class="svw_list">
-            <li><a href="/video/list/${video.islive}">返回</a></li>
-            <li><a href="/video/get/${video.id}">内容</a></li>
-            <li><a href="/video/edit/${video.id}">编辑</a></li>
+            <li><a href="/video/list/${video.islive}"><spring:message code="video.return"/></a></li>
+            <li><a href="/video/get/${video.id}"><spring:message code="video.content"/></a></li>
+            <li><a href="/video/edit/${video.id}"><spring:message code="video.edit"/></a></li>
             <li>
-                <a href="javascript:if(confirm('Are you sure to Delete?'))location='/video/delete/${video.id}'">删除</a>
+                <a href="javascript:if(confirm('Are you sure to Delete?'))location='/video/delete/${video.id}'"><spring:message
+                        code="video.delete"/></a>
             </li>
 
         </ul>

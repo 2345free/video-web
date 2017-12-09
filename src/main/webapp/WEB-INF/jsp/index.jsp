@@ -19,7 +19,7 @@
     <script type="text/JavaScript" src="/js/jquery.mousewheel.js"></script>
 
     <!-- Load the CloudCarousel JavaScript file -->
-    <script type="text/JavaScript" src="js/cloud-carousel.1.0.5.js"></script>
+    <script type="text/JavaScript" src="/js/cloud-carousel.1.0.5.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -55,7 +55,7 @@
     <div id="carousel1" style="width:960px; height:280px;background:none;overflow:scroll; margin-top: 20px">
         <c:forEach items="${resultVideo}" var="video">
             <a href="/video/get/${video.id}" rel="lightbox">
-                <img class="cloudcarousel" src="${video.thumbnailurl}" alt="${video.name}" title="${video.name}"/>
+                <img class="cloudcarousel" src="/${video.thumbnailurl}" alt="${video.name}" title="${video.name}"/>
             </a>
         </c:forEach>
     </div>
@@ -68,13 +68,13 @@
 </div>
 <div id="svw_main">
 
-    <h2><a href="/video/list/0">点播</a></h2>
+    <h2><a href="/video/list/0"><spring:message code="video.vod"/></a></h2>
     <c:if test="${empty resultVideoVod}">
-        <div style="height:100px;"><p>没有视频，单击管理页面的“添加”按钮来添加新视频</p></div>
+        <div style="height:100px;"><p><spring:message code="video.listempty"/></p></div>
     </c:if>
     <c:forEach items="${resultVideoVod}" var="video">
         <div class="col one_fourth gallery_box" style="background:#FFFFFF">
-            <a href="/video/get/${video.id}"><img src="${video.thumbnailurl}" alt="thumbnail"
+            <a href="/video/get/${video.id}"><img src="/${video.thumbnailurl}" alt="thumbnail"
                                                   class="image_frame"/></a>
             <h5><a href="/video/get/${video.id}">${video.name}</a></h5>
         </div>
@@ -82,13 +82,13 @@
 
     <div class="cleaner h20"></div>
 
-    <h2><a href="/video/list/1">直播</a></h2>
+    <h2><a href="/video/list/1"><spring:message code="video.live"/></a></h2>
     <c:if test="${empty resultVideoLive}">
-        <div style="height:100px;"><p>没有视频，单击管理页面的“添加”按钮来添加新视频</p></div>
+        <div style="height:100px;"><p><spring:message code="video.listempty"/></p></div>
     </c:if>
     <c:forEach items="${resultVideoLive}" var="video">
         <div class="col one_fourth gallery_box" style="background:#FFFFFF">
-            <a href="/video/get/${video.id}"><img src="${video.thumbnailurl}" alt="thumbnail"
+            <a href="/video/get/${video.id}"><img src="/${video.thumbnailurl}" alt="thumbnail"
                                                   class="image_frame"/></a>
             <h5><a href="/video/get/${video.id}">${video.name}</a></h5>
         </div>

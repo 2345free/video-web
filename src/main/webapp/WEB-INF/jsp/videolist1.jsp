@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,33 +33,35 @@
     <h2>
         <c:choose>
             <c:when test="${isLive==1}">
-                直播列表
+                <spring:message code="video.livelist"/>
             </c:when>
             <c:otherwise>
-                点播列表
+                <spring:message code="video.vodlist"/>
             </c:otherwise>
         </c:choose>
     </h2>
     <div class="post">
         <div class="meta">
-            <span><b>视频管理</b></span>
-            <span class="add"><a href="VideoAddPage.action?isLive=${isLive}">增加</a></span>
+            <span><b><spring:message code="video.listmanage"/></b></span>
+            <span class="add"><a href="VideoAddPage.action?isLive=${isLive}"><spring:message
+                    code="video.add"/></a></span>
         </div>
     </div>
     <c:if test="${empty videos}">
-        <p>没有视频，单击管理页面的“添加”按钮来添加新视频</p>
+        <p><spring:message code="video.listempty"/></p>
         <div style="height:300px;"></div>
     </c:if>
     <c:forEach items="${videos}" var="video">
         <div class="col one_fourth gallery_box" style="${video.videostate.cssstyle}">
             <a href="/video/get/${video.id}"><img src="/${video.thumbnailurl}" alt="thumbnail"
-                                                                    class="image_frame"/></a>
+                                                  class="image_frame"/></a>
             <h5><a href="/video/get/${video.id}">${video.name}</a></h5>
-            <p>编辑时间:${video.edittime}</p>
+            <p><spring:message code="video.edittime"/>:${video.edittime}</p>
             <p>
-                <a href="/video/get/${video.id}">内容</a>|
-                <a href="/video/edit/${video.id}">编辑</a>|
-                <a href="javascript:if(confirm('Are you sure to Delete?'))location='/video/delete/${video.id}'">删除</a>
+                <a href="/video/get/${video.id}"><spring:message code="video.content"/></a>|
+                <a href="/video/edit/${video.id}"><spring:message code="video.edit"/></a>|
+                <a href="javascript:if(confirm('Are you sure to Delete?'))location='/video/delete/${video.id}'"><spring:message
+                        code="video.delete"/></a>
             </p>
         </div>
     </c:forEach>
