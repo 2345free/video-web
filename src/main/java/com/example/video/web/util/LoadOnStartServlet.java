@@ -19,32 +19,47 @@
  */
 package com.example.video.web.util;
 
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.ServletContextAware;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 
 /**
- * @author 雷霄骅
  * 服务器开始运行后，初始化以下几个线程
  */
-@Component
-public class VideoHandleBean implements ServletContextAware {
+@WebServlet(urlPatterns = {"/x"}, loadOnStartup = 1)
+public class LoadOnStartServlet extends HttpServlet {
 
-    private ServletContext servletContext;
+    /**
+     * Constructor of the object.
+     */
+    public LoadOnStartServlet() {
+        super();
+    }
 
-    @Override
-    public void setServletContext(ServletContext servletContext) {
-        this.servletContext = servletContext;
+    public void destroy() {
+        super.destroy();
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
     }
 
     //Test
     public void GetFFmpegInfo() {
 
         try {
-            String realdir = servletContext.getRealPath("/").replace('\\', '/') + "test/";
+            String realdir = this.getServletContext().getRealPath("/").replace('\\', '/') + "test/";
             File realdirFile = new File(realdir);
             System.out.println(realdirFile);
             Process p;
@@ -68,13 +83,17 @@ public class VideoHandleBean implements ServletContextAware {
      */
     public void init() throws ServletException {
 
+        ServletContext sc = this.getServletContext();
+
+        System.err.println("后台视频处理线程已经启动。。。");
+
         //GetFFmpegInfo();
         //初始化的时候运行以下几个线程
         //截图
-        VideoThumbnailThread videoThumbnailThread = new VideoThumbnailThread(servletContext);
+        VideoThumbnailThread videoThumbnailThread = new VideoThumbnailThread(sc);
         videoThumbnailThread.start();
         //转码线程
-        VideoTranscoderThread videoConvertThread = new VideoTranscoderThread(servletContext);
+        VideoTranscoderThread videoConvertThread = new VideoTranscoderThread(sc);
         videoConvertThread.start();
     }
 

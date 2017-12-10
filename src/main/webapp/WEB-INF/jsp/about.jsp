@@ -5,7 +5,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Video, FFmpeg, JavaEE"/>
-    <meta name="author" content="Lei Xiaohua"/>
     <meta name="description" content="The simplest video website based on JavaEE and FFmpeg"/>
 
     <title>Simplest Video Website</title>
@@ -61,18 +60,17 @@
         <div class="cleaner h30"></div>
         <h2><s:property value="%{getText('about.aboutme')}"/></h2>
         <div class="about_box">
-            <a href="http://blog.csdn.net/leixiaohua1020">
-                <img src="images/author.jpg" alt="User 01" style="margin:20px;"/>
-            </a>
-            <h4>雷霄骅 Lei Xiaohua</h4>
+            <%--     <a href="#">
+                     <img src="/images/author.jpg" alt="User 01" style="margin:20px;"/>
+                 </a>--%>
+            <h4>天亦</h4>
             <p><br/>
-                <a href="mailto:leixiaohua1020@126.com">leixiaohua1020@126.com</a><br/>
-                中国传媒大学/数字电视技术<br/>
+                毕业于武汉某不知名大学/计算机软件技术<br/>
                 Communication University of China / Digital TV Technology<br/>
-                <a href="http://blog.csdn.net/leixiaohua1020">http://blog.csdn.net/leixiaohua1020</a></p>
+            </p>
             <div class="cleaner"></div>
-            <p>我是中国传媒大学的一个博士生，一直从事与广播电视有关的视音频技术的研究。希望通过分享这个简单的示例网站帮助新手学习视频技术。</p>
-            <p>I'm a PHD student in Communication University of China. I have focused on video/audio technics for
+            <p>这个项目是参考雷霄骅博士的项目。希望通过分享这个简单的示例网站帮助新手学习视频技术。</p>
+            <p>This project is the project reference ray Xiaohua Dr. I have focused on video/audio technics for
                 several years.
                 I shared this simple demo site to help beginnner to learn Video technics.</p>
         </div>

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.video.dao.VideoMapper">
-  <resultMap id="BaseResultMap" type="com.example.video.model.Video">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="intro" jdbcType="VARCHAR" property="intro" />
-    <result column="edittime" jdbcType="TIMESTAMP" property="edittime" />
-    <result column="categoryid" jdbcType="INTEGER" property="categoryid" />
-    <result column="islive" jdbcType="INTEGER" property="islive" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
-    <result column="oriurl" jdbcType="VARCHAR" property="oriurl" />
-    <result column="thumbnailurl" jdbcType="VARCHAR" property="thumbnailurl" />
-    <result column="videostateid" jdbcType="INTEGER" property="videostateid" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.example.video.model.Video">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="intro" jdbcType="VARCHAR" property="intro"/>
+        <result column="edittime" jdbcType="TIMESTAMP" property="edittime"/>
+        <result column="categoryid" jdbcType="INTEGER" property="categoryid"/>
+        <result column="islive" jdbcType="INTEGER" property="islive"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="oriurl" jdbcType="VARCHAR" property="oriurl"/>
+        <result column="thumbnailurl" jdbcType="VARCHAR" property="thumbnailurl"/>
+        <result column="videostateid" jdbcType="INTEGER" property="videostateid"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
 </mapper>

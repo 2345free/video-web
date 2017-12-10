@@ -3,6 +3,7 @@ package com.example.video;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.example.video.dao")
+@ServletComponentScan
 public class VideoWebApplication extends WebMvcConfigurerAdapter {
 
     public static void main(String[] args) {

@@ -90,7 +90,7 @@ public class VideoController {
         Video video = videoService.selectByKey(id);
         //获取根路径（绝对路径）
         ClassPathResource classPathResource = new ClassPathResource("static/");
-        String staticPath = classPathResource.getFile().getPath();
+        String staticPath = classPathResource.getFile().getPath() + "/";
 
         String thumbnailrealpath = staticPath + video.getThumbnailurl();
         String realpath = staticPath + video.getUrl();
