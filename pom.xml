@@ -6,7 +6,7 @@
     <groupId>com.example</groupId>
     <artifactId>video-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>video-web</name>
     <description>Demo project for Spring Boot</description>
@@ -128,9 +128,14 @@
 
         <!-- 增加jsp支持 -->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <!--<scope>provided</scope>-->
         </dependency>
 
         <dependency>
@@ -167,6 +172,7 @@
     </dependencies>
 
     <build>
+        <finalName>svw</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

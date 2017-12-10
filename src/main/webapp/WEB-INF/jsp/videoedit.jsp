@@ -9,14 +9,7 @@
     <meta name="description" content="The simplest video website based on JavaEE and FFmpeg"/>
 
     <title>Simplest Video Website</title>
-
-    <link href="/css/svw_style.css" rel="stylesheet" type="text/css"/>
-
-    <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/js/showhide.js"></script>
-    <script type="text/JavaScript" src="/js/jquery.mousewheel.js"></script>
-
+    <%@include file="JsAndCss.jsp" %>
     <!-- validationEngine -->
     <link rel="stylesheet" href="/css/validationEngine.jquery.css" type="text/css"/>
     <script src="/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
