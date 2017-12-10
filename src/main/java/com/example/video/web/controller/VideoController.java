@@ -9,6 +9,7 @@ import com.example.video.service.ConfigureService;
 import com.example.video.service.VideoService;
 import com.example.video.service.VideostateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -16,10 +17,10 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import tk.mybatis.mapper.entity.Example;
 
-import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -45,7 +46,7 @@ public class VideoController {
     private VideostateService videostateService;
 
     @RequestMapping("/list/{isLive}")
-    public String getAll(@PathVariable Integer isLive, Model model) {
+    public String list(@PathVariable Integer isLive, Model model) {
 
         Example var1 = new Example(Video.class);
         var1.setOrderByClause("edittime asc");
@@ -85,19 +86,16 @@ public class VideoController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id, ServletContext servletContext) {
+    public String delete(@PathVariable Integer id) throws IOException {
         Video video = videoService.selectByKey(id);
-        //相对路径
-        String thumbnailPath = video.getThumbnailurl();
-        String path = video.getUrl();
-        String oripath = video.getOriurl();
         //获取根路径（绝对路径）
-        String thumbnailrealpath = servletContext.getRealPath("/").replace('\\', '/')
-                + thumbnailPath;
-        String realpath = servletContext.getRealPath("/").replace('\\', '/')
-                + path;
-        String orirealpath = servletContext.getRealPath("/").replace('\\', '/')
-                + oripath;
+        ClassPathResource classPathResource = new ClassPathResource("static/");
+        String staticPath = classPathResource.getFile().getPath();
+
+        String thumbnailrealpath = staticPath + video.getThumbnailurl();
+        String realpath = staticPath + video.getUrl();
+        String orirealpath = staticPath + video.getOriurl();
+
         File thumbnailfile = new File(thumbnailrealpath);
         File videofile = new File(realpath);
         File orivideofile = new File(orirealpath);
@@ -113,11 +111,16 @@ public class VideoController {
         }
         //最后才删除该记录
         videoService.delete(id);
-        return "videolist1";
+        return "redirect:/video/list/" + video.getIslive();
+    }
+
+    @GetMapping("/toAdd")
+    public String toAdd() {
+        return "videoedit";
     }
 
     @RequestMapping("/add")
-    public String add(Video video, MultipartFile file, ServletContext servletContext) throws IOException {
+    public String add(Video video, @RequestParam("videofile") MultipartFile file) throws IOException {
 
         int order = 1;
 
@@ -134,13 +137,13 @@ public class VideoController {
         Configure folder_thumbnail_cfg = configures2.get(0);
         if (video.getIslive() == 0) {
             //点播
-            String oriurl = folder_videoori_cfg.getVal() + "/" + video.getName();
+            String oriurl = folder_videoori_cfg.getVal() + "/" + file.getOriginalFilename();
             video.setOriurl(oriurl);
             Category category = categoryService.selectByKey(1);
             video.setCategoryid(category.getId());
             //状态设置：等待上传
             var1 = new Example(Videostate.class);
-            var1.createCriteria().andEqualTo("Videostate", order);
+            var1.createCriteria().andEqualTo("order", order);
             List<Videostate> videostates = videostateService.selectByExample(var1);
             Videostate videostate = videostates.get(0);
             video.setVideostateid(videostate.getId());
@@ -150,7 +153,8 @@ public class VideoController {
             videoService.save(video);
 
             //上传视频文件
-            String realfileoriDir = servletContext.getRealPath(folder_videoori_cfg.getVal()).replace('\\', '/');
+            ClassPathResource classPathResource = new ClassPathResource("static/" + folder_videoori_cfg.getVal());
+            String realfileoriDir = classPathResource.getFile().getPath();
             //Check
             File realfileoriDirFile = new File(realfileoriDir);
             if (!realfileoriDirFile.exists() && !realfileoriDirFile.isDirectory()) {
@@ -158,13 +162,13 @@ public class VideoController {
                 System.out.println(realfileoriDirFile);
                 realfileoriDirFile.mkdir();
             }
-            String realfileoriPath = realfileoriDir + "/" + video.getName();
+            String realfileoriPath = realfileoriDir + "/" + file.getOriginalFilename();
             File targetFile = new File(realfileoriPath);
             // 保存文件
             FileCopyUtils.copy(file.getBytes(), targetFile);
             //等待截图
             var1 = new Example(Videostate.class);
-            var1.createCriteria().andEqualTo("Videostate", order + 1);
+            var1.createCriteria().andEqualTo("order", order + 1);
             videostates = videostateService.selectByExample(var1);
             videostate = videostates.get(0);
             video.setVideostateid(videostate.getId());
@@ -175,7 +179,7 @@ public class VideoController {
             video.setCategoryid(category.getId());
             //等待截图
             var1 = new Example(Videostate.class);
-            var1.createCriteria().andEqualTo("Videostate", order + 1);
+            var1.createCriteria().andEqualTo("order", order + 1);
             List<Videostate> videostates = videostateService.selectByExample(var1);
             Videostate videostate = videostates.get(0);
             video.setVideostateid(videostate.getId());
@@ -185,7 +189,7 @@ public class VideoController {
 
             videoService.save(video);
         }
-        return "videolist1";
+        return "redirect:list/" + video.getIslive();
     }
 
     @GetMapping("/edit/{id}")

@@ -40,19 +40,19 @@
         <div class="post">
             <c:choose>
                 <c:when test="${empty video}">
-                    <c:set value='<%=request.getParameter("islive")%>' var="islive" scope="page"/>
+                    <c:set value='<%=request.getParameter("isLive")%>' var="isLive" scope="page"/>
                     <h2><spring:message code="video.add"/>
                         <c:choose>
-                            <c:when test="${islive==1}"><spring:message code="video.live"/></c:when>
+                            <c:when test="${isLive==1}"><spring:message code="video.live"/></c:when>
                             <c:otherwise><spring:message code="video.vod"/></c:otherwise>
                         </c:choose>
                     </h2>
                 </c:when>
                 <c:otherwise>
-                    <c:set value="${video.islive}" var="islive" scope="page"/>
+                    <c:set value="${video.islive}" var="isLive" scope="page"/>
                     <h2><spring:message code="video.edit"/>
                         <c:choose>
-                            <c:when test="${islive==1}"><spring:message code="video.live"/></c:when>
+                            <c:when test="${isLive==1}"><spring:message code="video.live"/></c:when>
                             <c:otherwise><spring:message code="video.vod"/></c:otherwise>
                         </c:choose>
                         - ${video.name}
@@ -78,9 +78,9 @@
                                                                                               class="validate[required] required input_field"/>
                         <div class="cleaner h10"></div>
 
-                        <input type="hidden" name="islive" value="${islive}"/>
+                        <input type="hidden" name="islive" value="${isLive}"/>
                         <c:choose>
-                            <c:when test="${islive==1}">
+                            <c:when test="${isLive==1}">
                                 <label for="url">URL:</label> <input id="url" name="url" value="${video.url}"
                                                                      class="validate[required] required input_field"/>
                                 <div class="cleaner h10"></div>
@@ -118,7 +118,7 @@
 
     <div id="sidebar">
         <ul class="svw_list">
-            <li><a href="/video/list/${islive}"><spring:message code="video.return"/></a></li>
+            <li><a href="/video/list/${isLive}"><spring:message code="video.return"/></a></li>
             <c:if test="${!empty video}">
                 <li><a href="/video/get/${video.id}"><spring:message code="video.content"/></a></li>
                 <li><a href="/video/edit/${video.id}"><spring:message code="video.edit"/></a></li>

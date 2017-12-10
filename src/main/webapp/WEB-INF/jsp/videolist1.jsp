@@ -43,7 +43,7 @@
     <div class="post">
         <div class="meta">
             <span><b><spring:message code="video.listmanage"/></b></span>
-            <span class="add"><a href="VideoAddPage.action?isLive=${isLive}"><spring:message
+            <span class="add"><a href="/video/toAdd?isLive=${isLive}"><spring:message
                     code="video.add"/></a></span>
         </div>
     </div>
