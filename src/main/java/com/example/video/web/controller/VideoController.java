@@ -100,13 +100,13 @@ public class VideoController {
         File videofile = new File(realpath);
         File orivideofile = new File(orirealpath);
         //删除与之相关的截图文件和视频文件
-        if (thumbnailfile != null) {
+        if (thumbnailfile.exists()) {
             thumbnailfile.delete();
         }
-        if (videofile != null) {
+        if (videofile.exists()) {
             videofile.delete();
         }
-        if (orivideofile != null) {
+        if (orivideofile.exists()) {
             orivideofile.delete();
         }
         //最后才删除该记录
@@ -120,7 +120,7 @@ public class VideoController {
     }
 
     @RequestMapping("/add")
-    public String add(Video video, @RequestParam("videofile") MultipartFile file) throws IOException {
+    public String add(Video video, @RequestParam(name = "videofile", required = false) MultipartFile file) throws IOException {
 
         int order = 1;
 

@@ -124,20 +124,15 @@ public class VideoThumbnailThread extends Thread {
                         video.setThumbnailurl(settings.getFolder_thumbnail() + "/" + video.getId() + ".jpg");
 
                         Example var3 = new Example(Videostate.class);
-                        var3.createCriteria().andEqualTo("order", order + 1);
-                        Videostate nextvideostate = videostateService.selectByExample(var3).get(0);
-
-                        var3 = new Example(Videostate.class);
-                        var3.createCriteria().andEqualTo("order", order + 2);
-                        Videostate nextvideostate2 = videostateService.selectByExample(var3).get(0);
-
+                        Example.Criteria var3Criteria = var3.createCriteria();
                         if (video.getIslive() == 0) {
-                            video.setVideostateid(nextvideostate.getId());
-                            video.setVideostate(nextvideostate);
+                            var3Criteria.andEqualTo("order", order + 1);
                         } else {
-                            video.setVideostateid(nextvideostate2.getId());
-                            video.setVideostate(nextvideostate2);
+                            var3Criteria.andEqualTo("order", order + 2);
                         }
+                        Videostate nextvideostate = videostateService.selectByExample(var3).get(0);
+                        video.setVideostateid(nextvideostate.getId());
+                        video.setVideostate(nextvideostate);
 
                         videoService.updateNotNull(video);
                         //Rest--------------------------
