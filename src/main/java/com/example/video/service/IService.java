@@ -30,11 +30,15 @@ import java.util.List;
 
 /**
  * 通用接口
+ *
+ * @author luoxiaoxiao
  */
 @Service
 public interface IService<T> {
 
     T selectByKey(Object key);
+
+    T selectOne(T entity);
 
     int save(T entity);
 

@@ -1,4 +1,4 @@
-package com.example.video.dao;
+package com.example.video.mapper;
 
 import com.example.video.model.Videostate;
 import tk.mybatis.mapper.common.Mapper;

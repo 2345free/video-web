@@ -8,7 +8,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.example.video.dao")
+@MapperScan(basePackages = "com.example.video.mapper")
 @ServletComponentScan
 public class VideoWebApplication extends SpringBootServletInitializer {
 

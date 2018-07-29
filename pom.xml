@@ -27,13 +27,15 @@
         <mybatis-generator.version>1.3.6</mybatis-generator.version>
         <!--  Java接口和实体类  -->
         <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
-        <targetMapperPackage>com.example.video.dao</targetMapperPackage>
+        <targetMapperPackage>com.example.video.mapper</targetMapperPackage>
         <targetModelPackage>com.example.video.model</targetModelPackage>
         <!--  XML生成路径  -->
         <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
         <targetXMLPackage>mapper</targetXMLPackage>
         <!--  依赖版本  -->
         <mapper.version>3.4.4</mapper.version>
+        <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
+        <mapper.mappers>com.example.video.mapper.MyMapper</mapper.mappers>
     </properties>
 
     <dependencies>

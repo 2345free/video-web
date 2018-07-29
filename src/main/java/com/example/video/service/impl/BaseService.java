@@ -30,6 +30,11 @@ import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
+/**
+ * 通用方法
+ *
+ * @author luoxiaoxiao
+ */
 public abstract class BaseService<T> implements IService<T> {
 
     @Autowired
@@ -44,22 +49,32 @@ public abstract class BaseService<T> implements IService<T> {
         return mapper.selectByPrimaryKey(key);
     }
 
+    @Override
+    public T selectOne(T entity) {
+        return mapper.selectOne(entity);
+    }
+
+    @Override
     public int save(T entity) {
         return mapper.insertSelective(entity);
     }
 
+    @Override
     public int delete(Object key) {
         return mapper.deleteByPrimaryKey(key);
     }
 
+    @Override
     public int updateAll(T entity) {
         return mapper.updateByPrimaryKey(entity);
     }
 
+    @Override
     public int updateNotNull(T entity) {
         return mapper.updateByPrimaryKeySelective(entity);
     }
 
+    @Override
     public List<T> selectByExample(Object example) {
         return mapper.selectByExample(example);
     }
