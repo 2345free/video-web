@@ -1,2 +1,2 @@
 # video-web
-java实现的视频网站
+基于spring-boot实现的视频网站
